@@ -8,13 +8,11 @@ public class Vote {
     @Id
     @GeneratedValue
     @Column(name = "VOTE_ID")
-
-     Long id;
+    Long id;
 
     @ManyToOne
     @JoinColumn(name = "OPTION_ID")
-
-     Option option;
+    Option option;
 
 
     public Long getId() {
