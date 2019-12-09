@@ -61,7 +61,7 @@ public class PollController {
     }
 
 
-    @DeleteMapping("/polls/{pollid}")
+    @DeleteMapping("/polls/{pollId}")
     public ResponseEntity<?> deletePoll(@PathVariable Long pollId) {
         pollRepository.delete(pollId);
         return new ResponseEntity<>(HttpStatus.OK);

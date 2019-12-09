@@ -6,6 +6,9 @@ public class OptionCount {
     private Long optionId;
     private int count;
 
+    public OptionCount(Long id, Integer count) {
+    }
+
     public Long getOptionId() {
         return optionId;
     }

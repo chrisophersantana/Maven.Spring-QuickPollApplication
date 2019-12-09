@@ -28,7 +28,7 @@ public class VoteController {
         HttpHeaders responseHeaders = new HttpHeaders();
         responseHeaders.setLocation(ServletUriComponentsBuilder.
                 fromCurrentRequest().path("/{id}").buildAndExpand(vote.getId()).toUri());
-        return new ResponseEntity<>(null, responseHeaders, HttpStatus.CREATED);
+        return new ResponseEntity<>( responseHeaders, HttpStatus.CREATED);
     }
 
     @GetMapping("/polls/votes")
