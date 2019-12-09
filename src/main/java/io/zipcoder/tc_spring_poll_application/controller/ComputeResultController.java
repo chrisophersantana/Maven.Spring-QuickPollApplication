@@ -14,39 +14,22 @@ import java.util.Collection;
 @RestController
 public class ComputeResultController {
 
-    private VoteRepository voteRepository;
+     VoteRepository voteRepository;
 @Autowired
-   private PollRepository pollRepository;
+    PollRepository pollRepository;
 
     @Autowired
     public ComputeResultController(VoteRepository voteRepository) {
         this.voteRepository = voteRepository;
     }
 
-    @GetMapping("/computeResult")
+    @RequestMapping(value = "/computeresult", method = RequestMethod.GET)
     public ResponseEntity<?> computeResult(@RequestParam Long pollId) {
         VoteResult voteResult = new VoteResult();
         Iterable<Vote> allVotes = voteRepository.findVotesByPoll(pollId);
-        Collection<OptionCount> optionCounts = new ArrayList<>();
 
-
-        for(Option o : pollRepository.findOne(pollId).getOptions()){
-            Integer count = 0;
-            for(Vote v : allVotes) {
-                if(v.getOption().equals(o)){
-                    count++;
-                }
-            }
-            OptionCount optionCount = new OptionCount(o.getId(),count);
-            optionCounts.add(optionCount);
-        }
-        Integer totalVotes = 0;
-        for(Vote v : allVotes){
-            totalVotes++;
-        }
-        voteResult.setTotalVotes(totalVotes);
-        voteResult.setResults(optionCounts);
-
-        return new ResponseEntity<VoteResult>(voteResult, HttpStatus.OK); }
+        //TODO: Implement algorithm to count votes
+        return new ResponseEntity<VoteResult>(voteResult, HttpStatus.OK);
+    }
 
 }

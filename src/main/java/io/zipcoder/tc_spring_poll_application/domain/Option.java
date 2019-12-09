@@ -12,12 +12,13 @@ public class Option {
 @Id
 @GeneratedValue
 @Column (name = "OPTION_ID")
-     Long id;
+
+Long id;
 
 @Column(name = "OPTION_VALUE")
  String value;
 
-    public Long getId() {
+    public  Long getId() {
         return id;
     }
 
